@@ -1,0 +1,8 @@
+.env
+.streamlit/secrets.toml
+.spotify_token
+__pycache__/
+*.csv
+*.xlsx
+.idea/
+spotify-credits-webscraper/
