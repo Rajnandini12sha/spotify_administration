@@ -178,7 +178,7 @@ def fetch_artist_songs(headers, api_base, artist_id, progress_bar=None):
     while True:
         resp = requests.get(
             f"{api_base}/artists/{artist_id}/albums", headers=headers,
-            params={"include_groups": "album,single,compilation", "limit": 50, "offset": offset}
+            params={"include_groups": "album,single,compilation", "limit": 5, "offset": offset}
         )
         if resp.status_code == 429:
             time.sleep(int(resp.headers.get("Retry-After", 5)))
@@ -192,7 +192,7 @@ def fetch_artist_songs(headers, api_base, artist_id, progress_bar=None):
         all_albums.extend(items)
         if not data.get("next"):
             break
-        offset += 50
+        offset += 5
 
     # Get tracks from each album
     all_songs = []
@@ -401,4 +401,3 @@ if st.button("🚀 Extract", type="primary", use_container_width=True) and url:
         mime="text/csv",
         use_container_width=True
     )
-
