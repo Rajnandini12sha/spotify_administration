@@ -322,6 +322,38 @@ def fetch_single_track(headers, api_base, track_id):
 
 st.set_page_config(page_title="Spotify Data Extractor", page_icon="🎧", layout="wide")
 
+# Background image from file in repo
+import base64
+
+def set_background():
+    """Set background image with overlay for readability."""
+    bg_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "background.png")
+    if os.path.exists(bg_file):
+        with open(bg_file, "rb") as f:
+            img_data = base64.b64encode(f.read()).decode()
+        bg_css = f"""
+        <style>
+        .stApp {{
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url("data:image/png;base64,{img_data}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }}
+        </style>
+        """
+    else:
+        # Fallback: dark gradient if no image
+        bg_css = """
+        <style>
+        .stApp {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+        </style>
+        """
+    st.markdown(bg_css, unsafe_allow_html=True)
+
+set_background()
+
 st.title("🎧 Spotify Data Extractor")
 st.markdown("Paste any Spotify URL → get song data + credits as CSV. **No login required.**")
 
