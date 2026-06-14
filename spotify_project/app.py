@@ -322,21 +322,6 @@ def fetch_single_track(headers, api_base, track_id):
 
 st.set_page_config(page_title="Spotify Data Extractor", page_icon="🎧", layout="wide")
 
-# Show logo in top-right corner (lightweight)
-import base64
-
-def show_logo():
-    """Display company logo in the top-right corner."""
-    logo_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "background.png")
-    if os.path.exists(logo_file):
-        with open(logo_file, "rb") as f:
-            img_data = base64.b64encode(f.read()).decode()
-        st.markdown(
-            f'<img src="data:image/png;base64,{img_data}" style="position:fixed;top:14px;right:20px;height:50px;opacity:0.9;z-index:999;">',
-            unsafe_allow_html=True
-        )
-
-show_logo()
 
 st.title("🎧 Spotify Data Extractor")
 st.markdown("Paste any Spotify URL → get song data + credits as CSV. **No login required.**")
