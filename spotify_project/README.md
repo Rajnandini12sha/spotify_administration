@@ -1,4 +1,4 @@
-# 🎧 Spotify Data Extractor
+# 🎧 Spotify Data      Extractor
 
 Extract track details from any Spotify URL (artist, album, track, playlist) and save to CSV.
 
